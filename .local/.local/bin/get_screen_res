@@ -1,0 +1,4 @@
+#!/bin/bash
+
+xrandr | grep Screen | awk '{print $8 "x" $10}' | sed 's/,//'
+

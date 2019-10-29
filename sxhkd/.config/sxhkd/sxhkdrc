@@ -1,0 +1,15 @@
+# Basic binds
+super + f 
+	firefox
+# script to run ffmpeg screen cast
+super + a 
+	st -e ssc
+
+# kill ffmpeg screen cast
+super + z 
+	pkill ffmpeg
+
+# script to search for all manpages with
+# dmenu and open with zathura
+super + m
+        manr
