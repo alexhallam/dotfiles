@@ -9,11 +9,21 @@ The main suckless tools used are `st` and `dwm`.
 ```
 git clone
 
+mv debian10_suckless dotfiles
+
 cd dotfiles
 
 stow bashrc nvim tmux mpd ncmpcpp xsession bashrc 
 
-sudo apt-get install nvim tmux mpd ncmpcpp 
+sudo apt-get install neovim tmux mpd ncmpcpp make cc libx11-dev libxft-dev libxinerama-dev
+
+git clone https://git.suckless.org/dwm
+
+cd dwm && sudo make install clean
+
+git clone https://git.suckless.org/st
+
+cd st && sudo make install clean
 
 clone my st and dwm builds
 ```
