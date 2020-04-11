@@ -15,7 +15,7 @@ cd dotfiles
 
 stow bashrc nvim tmux mpd ncmpcpp xsession bashrc 
 
-sudo apt-get install neovim tmux mpd ncmpcpp make build-essential libx11-dev libxft-dev libxinerama-dev
+sudo apt-get install neovim tmux mpd ncmpcpp make build-essential libx11-dev libxft-dev libxinerama-dev xorg-dev
 
 git clone https://git.suckless.org/dwm
 
