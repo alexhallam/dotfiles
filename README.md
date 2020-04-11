@@ -7,6 +7,8 @@ The main suckless tools used are `st` and `dwm`.
 ### Instructions
 
 ```
+sudo apt install  git stow
+
 git clone
 
 cd dotfiles
