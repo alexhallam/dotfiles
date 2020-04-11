@@ -9,8 +9,6 @@ The main suckless tools used are `st` and `dwm`.
 ```
 git clone
 
-mv debian10_suckless dotfiles
-
 cd dotfiles
 
 stow bashrc nvim tmux mpd ncmpcpp xsession bashrc 
