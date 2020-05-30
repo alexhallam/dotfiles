@@ -40,6 +40,18 @@ clone my st and dwm builds
 - [ ] vim-plug https://github.com/junegunn/vim-plug  `curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
 
+### sxhd (simple x hotkey deamon)
+
+```
+sudo apt-get install sxhkd
+```
+
+### mpv
+
+```
+sudo apt-get install mpv
+```
+
 #### Brave Browser
  - [ ] curl https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
  
