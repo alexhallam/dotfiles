@@ -2,7 +2,7 @@
 # License: GNU GPLv3
 stow bashrc nvim tmux mpd ncmpcpp xsession bashrc 
 
-sudo apt-get install curl neovim tmux mpd ncmpcpp make feh build-essential libx11-dev libxft-dev libxinerama-dev xorg-dev sxhkd mpv pavucontrol
+sudo apt-get install curl neovim tmux mpd ncmpcpp make alsa-utils feh build-essential libx11-dev libxft-dev libxinerama-dev xorg-dev sxhkd mpv pavucontrol
 
 sudo apt-get --no-install-recommends install xserver-xorg xserver-xorg-video-fbdev xinit pciutils xinput xfonts-100dpi xfonts-75dpi xfonts-scalable
 
