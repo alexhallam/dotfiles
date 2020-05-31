@@ -37,3 +37,6 @@ echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable ma
 sudo apt update
 
 sudo apt install brave-browser
+
+# jedi is an autocomplete library. Very nice for vim.
+pip3 install jedi
