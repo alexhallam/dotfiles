@@ -1,11 +1,5 @@
 #!/bin/sh
 # License: GNU GPLv3
-
-sudo apt install  git stow
-git clone https://github.com/alexhallam/dotfiles.git
-
-cd dotfiles
-
 stow bashrc nvim tmux mpd ncmpcpp xsession bashrc 
 
 sudo apt-get install neovim tmux mpd ncmpcpp make build-essential libx11-dev libxft-dev libxinerama-dev xorg-dev sxhkd mpv pavucontrol
