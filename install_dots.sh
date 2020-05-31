@@ -10,6 +10,8 @@ git clone https://git.suckless.org/dwm
 
 cd dwm && sudo make install clean
 
+cd ..
+
 git clone https://git.suckless.org/st
 
 cd st && sudo make install clean
