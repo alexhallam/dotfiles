@@ -16,6 +16,13 @@ git clone https://git.suckless.org/st
 
 cd st && sudo make install clean
 
+cd ..
+
+git clone https://git.suckless.org/dmenu
+
+cd dmenu && sudo make install clean
+
+
 # vimplug
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
