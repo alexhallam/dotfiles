@@ -1,4 +1,4 @@
 #!/bin/bash
-source .fehbg/.fehbg
+feh --bg-scale ~/dotfiles/wall_papers/swirl.png
 exec dwm 
 setsid sxhkd
