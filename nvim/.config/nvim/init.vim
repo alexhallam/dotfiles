@@ -7,6 +7,7 @@ set spellfile=~/.config/nvim/en.utf-8.add
 imap jj <Esc>
 inoremap jj <ESC>
 let g:python3_host_prog='/usr/bin/python3'
+let g:python_host_prog='/usr/bin/python'
 set encoding=UTF-8
 set expandtab
 set shiftwidth=2
@@ -37,6 +38,8 @@ nmap <silent> <C-l> :wincmd l<CR>
 
 "Run Python with ,p
 nmap ,p :w<CR>:!python3 %<CR>
+"Time Python with ,t
+nmap ,t :w<CR>:!time python3 %<CR>
 " if file type is python then allow execution with F9
 nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
 
@@ -45,6 +48,13 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" 
+" Vim markdown preview
+" example
+nmap <C-s> <Plug>MarkdownPreview
+nmap <M-s> <Plug>MarkdownPreviewStop
+nmap <C-p> <Plug>MarkdownPreviewToggle
 "------------------------
 " Plugs
 "------------------------
@@ -88,8 +98,8 @@ Plug 'ncm2/ncm2-ultisnips'
 " Dependancies: pip3 install isort
 Plug 'fisadev/vim-isort'
 " ===============================
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
-"Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 call plug#end()
 "------------------------
 " End Plugs
@@ -230,6 +240,8 @@ let g:startify_lists = [
 " supported in neovim
 " autocmd BufWritePost config.h,config.def.h !make install
 
-" Atomatically stop sxhkd then restart sxhkd
-autocmd BufWritePost *sxhkdrc !pkill sxhkd; setsid sxhkd &
-
+""""""""""""""""""""""""""""""""""""
+"Markdown Preview
+" set to 1, nvim will open the preview window after entering the markdown buffer
+" default: 0
+let g:mkdp_auto_start = 1
