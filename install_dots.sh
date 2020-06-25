@@ -42,8 +42,5 @@ sudo apt install brave-browser
 pip3 install jedi
 
 # install writing things
-# https://yihui.org/tinytex/
-wget -qO- "https://yihui.org/gh/tinytex/tools/install-unx.sh" | sh
-sudo apt-get install texlive
-sudo tlmgr init-usertree
-sudo tlmgr install latexmk
+
+
