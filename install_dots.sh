@@ -40,3 +40,11 @@ sudo apt install brave-browser
 
 # jedi is an autocomplete library. Very nice for vim.
 pip3 install jedi
+
+# install writing things
+# https://yihui.org/tinytex/
+wget -qO- "https://yihui.org/gh/tinytex/tools/install-unx.sh" | sh
+sudo apt-get install texlive
+
+
+
