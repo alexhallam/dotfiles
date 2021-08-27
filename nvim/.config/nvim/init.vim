@@ -1,171 +1,52 @@
-set termguicolors
-set number
+" Plugins
+call plug#begin('~/.vim/plugged')
+Plug 'rakr/vim-one'                  " vim-one color theme
+Plug 'scrooloose/nerdtree'           " side bar file tree
+Plug 'itchyny/lightline.vim'         " minmal status bar
+Plug 'tpope/vim-fugitive'            " allows git commands in vim session
+Plug 'airblade/vim-gitgutter'        " shows git changes in gutter
+Plug 'easymotion/vim-easymotion'     " go to any word quickly '\\w', '\\e', '\\b'
+Plug 'KKPMW/vim-sendtowindow'        " send commands to REPL
+Plug 'yuttie/comfortable-motion.vim' " scrolling 'C-d' or 'C-u'
+Plug 'ncm2/ncm2'                     " completion [dep]: nvim-0.2.2, nvim-yarp, python3
+Plug 'roxma/nvim-yarp'               " remote plugin framework required for ncm2
+Plug 'ncm2/ncm2-bufword'             " complete words in buffer
+Plug 'ncm2/ncm2-path'                " complete paths
+Plug 'ncm2/ncm2-jedi'                " Python completion
+Plug 'gaalcaras/ncm-R'               " R completion [dep]: ncm2, Nvim-R
+Plug 'jalvesaq/Nvim-R'               " required for ncm-R
+Plug 'dense-analysis/ale'            " linting [dep]: pip3 install flake8, install.packages('lintr')
+Plug 'fisadev/vim-isort'             " Python sort imports [dep]: pip3 install isort
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'mhinz/vim-startify'            " A start menu for vim
+Plug 'tpope/vim-surround'            " replace surrounding characters
+Plug 'filipekiss/ncm2-look.vim'      " ncm2 spelling
+Plug 'SirVer/ultisnips'              " hotkeys for chunks of code
+Plug 'JuliaEditorSupport/julia-vim'  " julia syntax highlighting
+Plug 'rust-lang/rust.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'cespare/vim-toml'
+call plug#end()
+
+" ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit="vertical"
+
+" ncm2-loom
+let g:ncm2_look_enabled = 0
+
 " turn on spelling and make a spell file
 set spelllang=en_us
 set spellfile=~/.config/nvim/en.utf-8.add
-"remaps
-imap jj <Esc>
-inoremap jj <ESC>
-let g:python3_host_prog='/usr/bin/python3'
-let g:python_host_prog='/usr/bin/python'
-set encoding=UTF-8
-set expandtab
-set shiftwidth=2
-set wrap
-set tw=120
 
-
-"map <F3> :r! date +"\%Y-\%m-\%d \%H:\%M:\%S"<cr>
-"map <F4> :r! date +"\%Y-\%m-\%d"<cr>
-
-"turn on mouse support
-"   magic that allows mosue placement
-"   and scrooling and copy/paste
-"   To copy highlight text then use
-"   SHIFT + RightClick + Copy
-"   To paste use Middle Mouse
-set mouse=a
-
-" fixes for konsole emitting extra "q" in terminal while ssh
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=0
-let $TERM='konsole-256color'
-
-" Window switching
-nmap <silent> <C-k> :wincmd k<CR>
-nmap <silent> <C-j> :wincmd j<CR>
-nmap <silent> <C-h> :wincmd h<CR>
-nmap <silent> <C-l> :wincmd l<CR>
-
-"Run Python with ,p
-nmap ,p :w<CR>:!python3 %<CR>
-"Time Python with ,t
-nmap ,t :w<CR>:!time python3 %<CR>
-" if file type is python then allow execution with F9
-nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
-
-" Easier split navigation
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-" 
-" Vim markdown preview
-" example
-nmap <C-s> <Plug>MarkdownPreview
-nmap <M-s> <Plug>MarkdownPreviewStop
-nmap <C-p> <Plug>MarkdownPreviewToggle
-"------------------------
-" Plugs
-"------------------------
-call plug#begin('~/.vim/plugged')
-Plug 'dikiaap/minimalist'
-Plug 'scrooloose/nerdtree'
-Plug 'jalvesaq/Nvim-R'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'yuttie/comfortable-motion.vim'
-Plug 'tpope/vim-surround'
-Plug 'autozimu/LanguageClient-neovim', {
-     \ 'branch': 'next',
-     \ 'do': 'bash install.sh',
-     \ }
-Plug 'airblade/vim-gitgutter'
-Plug 'jiangmiao/auto-pairs'
-Plug 'easymotion/vim-easymotion'
-Plug 'mhinz/vim-startify'
-Plug 'rakr/vim-one'
-" adds git branch on airline
-Plug 'tpope/vim-fugitive'
-" Better Visual Guide Python
-Plug 'Yggdroot/indentLine' 
-" syntax check
-Plug 'w0rp/ale'
-" R autocomplete 
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-Plug 'gaalcaras/ncm-R'
-Plug 'ncm2/ncm2-bufword'
-" Python autocomplete
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-jedi'
-" Formater
-Plug 'Chiel92/vim-autoformat'
-" Snippets
-Plug 'sirver/UltiSnips'
-Plug 'ncm2/ncm2-ultisnips'
-" Python sort imports 
-" Dependancies: pip3 install isort
-Plug 'fisadev/vim-isort'
-" ===============================
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
-
-call plug#end()
-"------------------------
-" End Plugs
-"------------------------
-
-" Theme Plug 'dikiaap/minimalist'
-set t_Co=256
-syntax on
-" colorscheme minimalist 
-colorscheme one
-set background=dark "for the light version
-"set background=light" for the light version
-
-" Airline
-let g:airline_powerline_fonts=1
-let g:airline#extensions#branch#enabled=1
-let g:airline_section_warning=0
-let g:airline_theme='one'
-
-" There should not be a need for this airline unicode
-" manual setup, but just in case a powerline patched font
-" it not being used then this is a nice fallback
-" https://vi.stackexchange.com/questions/3359/how-do-i-fix-the-status-bar-symbols-in-the-airline-plugin
-" air-line
-let g:airline_powerline_fonts = 1
-
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
-
-
-" nerdtree settings
-map <C-n> :NERDTreeToggle<CR>
-let NERDTreeIgnore = ['\.pyc$']
-
-" R 
-nmap ,, <Plug>REDSendParagraph
-vmap , <Plug>RDSendSelection
-let g:rout_follow_colorscheme = 1
-let g:Rout_more_colors = 1
-let g:R_show_arg_help = 0 
-let g:R_show_args = 1
-let g:R_args_in_stline = 1
-let g:R_in_buffer = 1
-let g:R_nvimpager="vertical"
-let g:R_assign = 0
-" nmap <F2> <Plug>RStart
-" nmap <F3> <Plug>RUpdateObjBrowser
-iabbrev mm %>%<CR>
-iabbrev -- <-
-" autocmd filetype r inoremap $ $<C-x><C-o>
-set completeopt-=preview
+" startify
+let g:startify_lists = [
+      \ { 'type': 'sessions',  'header': ['   Sessions']       },
+      \ { 'type': 'files',     'header': ['   Recent']            },
+      \ { 'type': 'commands',  'header': ['   Commands']       },
+      \ ]
 
 " markdown-preview.nvim
 let g:mkdp_auto_start = 0
@@ -191,57 +72,86 @@ let g:mkdp_highlight_css = ''
 let g:mkdp_port = ''
 let g:mkdp_page_title = '「${name}」'
 
-" Linting, autocomplete, and pep8
-" Dependancies: 
-" Python
-"       pip install jedi
-"       pip install flake8 
-"       pip install autopep8 
-"       pip3 install pynvim
-" R
-"       install.packages("lintr")
-"
-" Neccesary ncm2 for R autocomplete to work
-augroup NCM2
-autocmd!
-" enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
-" :help Ncm2PopupOpen for more information
-set completeopt=noinsert,menuone,noselect
-augroup END
+" vim-isort 
+let g:vim_isort_map = '<C-i>'
 
 " Ale Linting
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_linters = {'python': ['flake8'], 'r': ['lintr']}
+let g:ale_sign_column_always=1
+let g:ale_lint_on_enter=1
+let g:ale_lint_on_text_changed='always'
+let g:ale_echo_msg_error_str='E'
+let g:ale_echo_msg_warning_str='W'
+let g:ale_echo_msg_format='[%linter%] %s [%severity%]: [%...code...%]'
+let g:ale_linters={'python': ['flake8'], 'r': ['lintr']}
+let g:ale_fixers={'python': ['black']}
 
-" Python package sorting
-let g:vim_isort_map = '<C-i>'
-let g:vim_isort_python_version = 'python3'
-" ===================================================
-"
-" GitGutter
+" lightline 
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
+
+" ncm2 
+autocmd BufEnter * call ncm2#enable_for_buffer()      " enable ncm2 for all buffers
+set completeopt=noinsert,menuone,noselect             " IMPORTANT: :help Ncm2PopupOpen for more information
+let g:python3_host_prog='/usr/bin/python3'            " ncm2-jedi
+
+
+" gitgutter
 let g:gitgutter_async=0
 
-" Startify
-"let g:startify_custom_header = []
-let g:startify_lists = [
-      \ { 'type': 'sessions',  'header': ['   Sessions']       },
-      \ { 'type': 'files',     'header': ['   Recent']            },
-      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-      \ { 'type': 'commands',  'header': ['   Commands']       },
-      \ ]
+" nerdtree settings
+map <C-n> :NERDTreeToggle<CR>
+let NERDTreeIgnore = ['\.pyc$']  " ignore pyc files
 
-" Atomatically compile config.h files (suckless)
-" this requires sudo, but sudo commands are not
-" supported in neovim
-" autocmd BufWritePost config.h,config.def.h !make install
+" Theme settings
+colorscheme one                  " use vim-one colorscheme
+set background=dark              " [dark or light]
+set termguicolors                " fg and bg highlighting requires compatible terminal colors
 
-""""""""""""""""""""""""""""""""""""
-"Markdown Preview
-" set to 1, nvim will open the preview window after entering the markdown buffer
-" default: 0
-let g:mkdp_auto_start = 1
+" Window Splits
+set splitbelow splitright
+" Remap splits navigation to just CTRL + hjkl
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+" Make adjusing split sizes a bit more friendly
+noremap <silent> <C-Left> :vertical resize +3<CR>
+noremap <silent> <C-Right> :vertical resize -3<CR>
+noremap <silent> <C-Up> :resize -3<CR>
+noremap <silent> <C-Down> :resize +3<CR>
+" Change 2 split windows from vert to horiz or horiz to vert
+map <Leader>th <C-w>t<C-w>H
+map <Leader>tk <C-w>t<C-w>K
+" Start terminals for R and Python sessions '\tr' or '\tp'
+map <Leader>tr :new term://bash<CR>iR<CR><C-\><C-n><C-w>k
+map <Leader>tp :new term://bash<CR>ipython3<CR><C-\><C-n><C-w>k
+map <Leader>td :new term://bash<CR>isqlite3<CR><C-\><C-n><C-w>k
+map <Leader>tj :new term://bash<CR>ijulia<CR><C-\><C-n><C-w>k
+map <Leader>ts :new term://bash<CR>iscala<CR><C-\><C-n><C-w>k
+map <Leader>tt :new term://bash<CR><C-\><C-n><C-w>k
+
+" General Settings
+set number                      " set line numbers
+set updatetime=100              " set update time for gitgutter update
+set noswapfile                  " no swap
+set clipboard=unnamedplus       " Copy/paste between vim and other programs. '"+y' then middlemouse
+" tabs and spaces
+set expandtab                   " Use spaces instead of tabs.
+set smarttab                    " Uses shiftwidth and tabstap to insert blanks when <Tab>
+set shiftwidth=2                " One tab == four spaces.
+set tabstop=2                   " One tab == four spaces.<Paste>
+" remap
+:imap ii <Esc>
+" python alias (,p runs python on script. ,t times python script)
+nmap ,p :w<CR>:!python3 %<CR>
+nmap ,t :w<CR>:!time python3 %<CR>
+" SQLite should use SQL highlights. See :help ft-sql for more info
+autocmd BufNewFile,BufRead *.sqlite set syntax=sql
